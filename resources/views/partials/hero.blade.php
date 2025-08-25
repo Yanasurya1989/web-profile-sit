@@ -1,5 +1,6 @@
 <section id="hero-carousel" class="carousel slide" data-bs-ride="carousel">
     <style>
+        /* CSS sama persis kaya versi static kamu */
         #hero-carousel {
             height: 100vh;
             overflow: hidden;
@@ -135,7 +136,7 @@
             }
         }
 
-        @media (min-width: 768px) {
+        @media (min-width:768px) {
             .carousel-caption h1 {
                 font-size: 3rem;
             }
@@ -147,43 +148,27 @@
     </style>
 
     <div class="carousel-inner">
-        <!-- Slide 1 -->
-        <div class="carousel-item active">
-            <img src="{{ asset('assets/images/hero/sd.jpg') }}" alt="Slide 1">
-            <div class="carousel-caption">
-                <h1><span class="typed-container"><span class="typed-text"
-                            data-typed="Sekolah Tahfidz Al-Qur'an"></span></span></h1>
-                <p>Menjadi generasi penghafal Al-Qur’an yang berakhlak mulia.</p>
-                <a href="#programs" class="btn btn-custom">Lihat Program</a>
-                <a href="https://wa.me/6289601353957" class="btn btn-custom white">Daftar Sekarang</a>
+        @foreach ($heroes as $index => $hero)
+            <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                <img src="{{ asset($hero->image) }}" alt="Slide {{ $index + 1 }}">
+                <div class="carousel-caption">
+                    <h1>
+                        <span class="typed-container">
+                            <span class="typed-text" data-typed="{{ $hero->title }}"></span>
+                        </span>
+                    </h1>
+                    <p>{{ $hero->description }}</p>
+                    @if ($hero->btn_primary_text && $hero->btn_primary_link)
+                        <a href="{{ $hero->btn_primary_link }}" class="btn btn-custom">{{ $hero->btn_primary_text }}</a>
+                    @endif
+                    @if ($hero->btn_secondary_text && $hero->btn_secondary_link)
+                        <a href="{{ $hero->btn_secondary_link }}"
+                            class="btn btn-custom white">{{ $hero->btn_secondary_text }}</a>
+                    @endif
+                </div>
             </div>
-        </div>
-
-        <!-- Slide 2 -->
-        <div class="carousel-item">
-            <img src="{{ asset('assets/images/hero/inggris.jpg') }}" alt="Slide 2">
-            <div class="carousel-caption">
-                <h1><span class="typed-container"><span class="typed-text"
-                            data-typed="Pendidikan Karakter"></span></span></h1>
-                <p>Membentuk pribadi berakhlak, disiplin, dan bertanggung jawab melalui pembiasaan positif.</p>
-                <a href="#about" class="btn btn-custom">Tentang Kami</a>
-                <a href="https://wa.me/6289601353957" class="btn btn-custom white">Daftar Sekarang</a>
-            </div>
-        </div>
-
-        <!-- Slide 3 -->
-        <div class="carousel-item">
-            <img src="{{ asset('assets/images/hero/p.karakter.jpg') }}" alt="Slide 3">
-            <div class="carousel-caption">
-                <h1><span class="typed-container"><span class="typed-text" data-typed="Sekolah Bilingual"></span></span>
-                </h1>
-                <p>Menguasai dua bahasa (Indonesia & Inggris) untuk menghadapi dunia global dengan percaya diri.</p>
-                <a href="#contact" class="btn btn-custom">Hubungi Kami</a>
-                <a href="https://wa.me/6289601353957" class="btn btn-custom white">Daftar Sekarang</a>
-            </div>
-        </div>
+        @endforeach
     </div>
-
 
     <!-- Controls -->
     <button class="carousel-control-prev" type="button" data-bs-target="#hero-carousel" data-bs-slide="prev">
@@ -199,10 +184,8 @@
     </a>
 </section>
 
-<!-- Bootstrap Icons -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
-<!-- Typed.js -->
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 <script>
     let typedInstance = null;
@@ -221,18 +204,12 @@
     function initTypedOnActiveSlide() {
         const activeSlide = document.querySelector('.carousel-item.active .typed-text');
         if (activeSlide) {
-            const text = activeSlide.dataset.typed;
-            runTyped(activeSlide, text);
+            runTyped(activeSlide, activeSlide.dataset.typed);
         }
     }
-
-    // Initialize first slide
     document.addEventListener('DOMContentLoaded', function() {
         initTypedOnActiveSlide();
-
-        // Listen for slide changes
-        const carousel = document.querySelector('#hero-carousel');
-        carousel.addEventListener('slid.bs.carousel', function() {
+        document.querySelector('#hero-carousel').addEventListener('slid.bs.carousel', function() {
             initTypedOnActiveSlide();
         });
     });
