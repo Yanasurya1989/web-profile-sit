@@ -71,4 +71,13 @@ class HeroController extends Controller
         $hero->delete();
         return redirect()->route('admin.hero.index')->with('success', 'Hero berhasil dihapus');
     }
+
+    public function toggleStatus($id)
+    {
+        $hero = Hero::findOrFail($id);
+        $hero->status = !$hero->status; // toggle 1 <-> 0
+        $hero->save();
+
+        return back()->with('success', 'Status hero berhasil diubah!');
+    }
 }

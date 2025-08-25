@@ -25,16 +25,35 @@
                         <td>{{ $hero->title }}</td>
                         <td>{{ Str::limit($hero->description, 50) }}</td>
                         <td><img src="{{ asset('storage/' . $hero->image) }}" width="100"></td>
-                        <td>{{ $hero->status ? 'Aktif' : 'Nonaktif' }}</td>
                         <td>
-                            <a href="{{ route('admin.hero.edit', $hero) }}" class="btn btn-warning btn-sm">Edit</a>
-                            <form action="{{ route('admin.hero.destroy', $hero) }}" method="POST"
-                                style="display:inline-block">
-                                @csrf @method('DELETE')
-                                <button class="btn btn-danger btn-sm"
-                                    onclick="return confirm('Yakin hapus?')">Hapus</button>
-                            </form>
+                            @if ($hero->status)
+                                <span class="badge bg-success">Aktif</span>
+                            @else
+                                <span class="badge bg-secondary">Nonaktif</span>
+                            @endif
                         </td>
+                        <td>
+                            <div class="d-flex gap-1">
+                                <form action="{{ route('admin.hero.toggle', $hero->id) }}" method="POST">
+                                    @csrf
+                                    @method('PATCH')
+                                    <button type="submit"
+                                        class="btn btn-sm {{ $hero->status ? 'btn-secondary' : 'btn-success' }}">
+                                        {{ $hero->status ? 'Nonaktifkan' : 'Aktifkan' }}
+                                    </button>
+                                </form>
+
+                                <a href="{{ route('admin.hero.edit', $hero->id) }}" class="btn btn-warning btn-sm">Edit</a>
+
+                                <form action="{{ route('admin.hero.destroy', $hero->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger btn-sm"
+                                        onclick="return confirm('Yakin hapus?')">Hapus</button>
+                                </form>
+                            </div>
+                        </td>
+
                     </tr>
                 @empty
                     <tr>
