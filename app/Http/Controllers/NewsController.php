@@ -143,4 +143,13 @@ class NewsController extends Controller
 
         return redirect()->route('news.backend.index')->with('success', 'Berita berhasil dihapus!');
     }
+
+    public function toggleStatus($id)
+    {
+        $news = News::findOrFail($id);
+        $news->status = !$news->status; // toggle 1 <-> 0
+        $news->save();
+
+        return back()->with('success', 'Status berita berhasil diubah!');
+    }
 }

@@ -2,7 +2,10 @@
 
 @section('content')
     <div class="container py-5">
-        <h2 class="text-center mb-5">Semua Berita</h2>
+        <div class="mt-5">
+            <h2 class="mb-4 text-center">Semua Berita</h2>
+        </div>
+        {{-- <h2 class="text-center mb-5">Semua Berita</h2> --}}
 
         <div class="row">
             @foreach ($news as $item)

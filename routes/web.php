@@ -24,4 +24,6 @@ Route::prefix('admin')->group(function () {
     Route::get('/news/{id}/edit', [NewsController::class, 'edit'])->name('admin.news.edit');
     Route::put('/news/{id}', [NewsController::class, 'update'])->name('admin.news.update');
     Route::delete('/news/{id}', [NewsController::class, 'destroy'])->name('admin.news.destroy');
+    Route::patch('/news/{id}/toggle-status', [NewsController::class, 'toggleStatus'])
+        ->name('admin.news.toggle-status');
 });
