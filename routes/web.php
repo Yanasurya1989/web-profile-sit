@@ -47,3 +47,22 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::resource('hero', HeroController::class);
     Route::patch('hero/{id}/toggle', [HeroController::class, 'toggleStatus'])->name('hero.toggle');
 });
+
+
+
+Route::view('/jenjang/sd', 'jenjang.sd')->name('jenjang.sd');
+Route::view('/jenjang/smp', 'jenjang.smp')->name('jenjang.smp');
+Route::view('/jenjang/sma', 'jenjang.sma')->name('jenjang.sma');
+
+// sementara: proses redirect dari form
+Route::post('/register', function (\Illuminate\Http\Request $request) {
+    $level = $request->input('level');
+    if ($level == 'SD') {
+        return redirect()->route('jenjang.sd');
+    } elseif ($level == 'SMP') {
+        return redirect()->route('jenjang.smp');
+    } elseif ($level == 'SMA') {
+        return redirect()->route('jenjang.sma');
+    }
+    return back()->with('error', 'Jenjang belum dipilih');
+})->name('register.submit');
