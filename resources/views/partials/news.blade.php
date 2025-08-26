@@ -23,7 +23,7 @@
             @endforeach
         </div>
 
-        <!-- Tombol lihat semua berita -->
+
         <div class="text-center mt-4">
             <a href="{{ route('news.index') }}" class="btn btn-outline-primary">Lihat Semua Berita</a>
         </div>

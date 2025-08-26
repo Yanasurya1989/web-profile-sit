@@ -9,7 +9,7 @@ class HeroSeeder extends Seeder
 {
     public function run(): void
     {
-        Hero::truncate(); // kosongkan dulu biar ga dobel
+        Hero::truncate();
 
         Hero::create([
             'title' => "Sekolah Tahfidz Al-Qur'an",

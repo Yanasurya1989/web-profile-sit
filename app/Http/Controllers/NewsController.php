@@ -31,14 +31,14 @@ class NewsController extends Controller
         return view('news.show', compact('news'));
     }
 
-    // 📌 List berita untuk admin
+    // List berita untuk admin
     public function adminIndex()
     {
         $news = News::orderBy('published_at', 'desc')->paginate(10);
         return view('news.backend.index', compact('news'));
     }
 
-    // 📌 Form create
+    // Form create
     public function create()
     {
         return view('news.backend.create');
@@ -80,7 +80,7 @@ class NewsController extends Controller
         return redirect()->route('admin.news.index')->with('success', 'Berita berhasil ditambahkan!');
     }
 
-    // 📌 Form edit
+    // Form edit
     public function edit($id)
     {
         $news = News::findOrFail($id);

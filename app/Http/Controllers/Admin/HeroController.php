@@ -33,7 +33,7 @@ class HeroController extends Controller
         Hero::create([
             'title' => $request->title,
             'description' => $request->description,
-            'image' => $path,
+            'image' => 'storage/' . $path,
             'status' => $request->status,
         ]);
 
@@ -58,7 +58,7 @@ class HeroController extends Controller
 
         if ($request->hasFile('image')) {
             $path = $request->file('image')->store('hero', 'public');
-            $data['image'] = $path;
+            $data['image'] = 'storage/' . $path; // tambahin storage/
         }
 
         $hero->update($data);

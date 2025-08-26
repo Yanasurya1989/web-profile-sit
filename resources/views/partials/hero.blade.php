@@ -1,6 +1,5 @@
 <section id="hero-carousel" class="carousel slide" data-bs-ride="carousel">
     <style>
-        /* CSS sama persis kaya versi static kamu */
         #hero-carousel {
             height: 100vh;
             overflow: hidden;

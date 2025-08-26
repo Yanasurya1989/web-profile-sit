@@ -9,6 +9,10 @@
             <div class="mt-5">
                 <h2 class="mb-4">Manajemen Berita</h2>
             </div>
+            <div class="d-flex gap-2 mb-3">
+                <a href="{{ route('admin.dashboard') }}" class="btn btn-primary">⬅ Kembali ke Dashboard</a>
+                <a href="{{ route('admin.news.create') }}" class="btn btn-success">+ Tambah Berita</a>
+            </div>
 
         </div>
 
@@ -16,7 +20,6 @@
             <div class="alert alert-success">{{ session('success') }}</div>
         @endif
 
-        <a href="{{ route('admin.news.create') }}" class="btn btn-primary mb-3">+ Tambah Berita</a>
 
         <table class="table table-bordered table-striped">
             <thead class="table-light">

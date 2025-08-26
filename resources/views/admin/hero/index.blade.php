@@ -3,7 +3,11 @@
 @section('content')
     <div class="container mt-4">
         <h2 class="mb-3">Daftar Hero</h2>
-        <a href="{{ route('admin.hero.create') }}" class="btn btn-success mb-3">Tambah Hero</a>
+
+        <div class="d-flex gap-2 mb-3">
+            <a href="{{ route('admin.dashboard') }}" class="btn btn-primary">⬅ Kembali ke Dashboard</a>
+            <a href="{{ route('admin.hero.create') }}" class="btn btn-success">Tambah Hero</a>
+        </div>
 
         @if (session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
@@ -24,7 +28,7 @@
                     <tr>
                         <td>{{ $hero->title }}</td>
                         <td>{{ Str::limit($hero->description, 50) }}</td>
-                        <td><img src="{{ asset('storage/' . $hero->image) }}" width="100"></td>
+                        <td><img src="{{ asset($hero->image) }}" width="100"></td>
                         <td>
                             @if ($hero->status)
                                 <span class="badge bg-success">Aktif</span>
@@ -53,7 +57,6 @@
                                 </form>
                             </div>
                         </td>
-
                     </tr>
                 @empty
                     <tr>

@@ -88,7 +88,7 @@
             </div>
         </div>
 
-        <!-- ROW 2: Text kiri - Image kanan -->
+
         <div class="row align-items-center g-4 flex-md-row-reverse">
             <!-- Image -->
             <div class="col-md-6">

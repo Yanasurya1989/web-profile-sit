@@ -68,64 +68,6 @@
     <!-- TSParticles -->
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
 
-    <!-- Init AOS & Particles -->
-    {{-- <script>
-        AOS.init({
-            duration: 1000,
-            once: true
-        });
-
-        tsParticles.load("particles-programs", {
-            fullScreen: {
-                enable: false
-            },
-            particles: {
-                number: {
-                    value: 30
-                },
-                color: {
-                    value: "#ffffff"
-                },
-                shape: {
-                    type: "circle"
-                },
-                opacity: {
-                    value: 0.15
-                },
-                size: {
-                    value: {
-                        min: 1,
-                        max: 3
-                    }
-                },
-                move: {
-                    enable: true,
-                    speed: 0.6,
-                    direction: "none",
-                    random: true,
-                    straight: false,
-                    outModes: {
-                        default: "out"
-                    }
-                }
-            },
-            interactivity: {
-                events: {
-                    onHover: {
-                        enable: true,
-                        mode: "repulse"
-                    }
-                },
-                modes: {
-                    repulse: {
-                        distance: 50
-                    }
-                }
-            },
-            detectRetina: true
-        });
-    </script> --}}
-
     @stack('scripts')
 </body>
 

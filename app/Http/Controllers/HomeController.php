@@ -13,8 +13,6 @@ class HomeController extends Controller
         $news = News::where('status', 1)->latest()->get();
         $heroes = Hero::where('status', 1)->latest()->get();
 
-
-        // kirim ke view home.blade.php
         return view('home', compact('news', 'heroes'));
     }
 }

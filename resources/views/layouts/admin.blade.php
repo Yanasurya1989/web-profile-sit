@@ -11,14 +11,6 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="{{ route('admin.dashboard') }}">Admin Panel</a>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.news.index') }}">News</a>
-                    </li>
-                    {{-- nanti bisa tambah menu lain di sini --}}
-                </ul>
-            </div>
         </div>
     </nav>
 

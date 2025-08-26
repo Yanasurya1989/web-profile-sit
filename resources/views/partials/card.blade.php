@@ -48,7 +48,6 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
             height: 100%;
             min-height: 350px;
-            /* 🔥 tambahin tinggi seragam */
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -72,14 +71,12 @@
             font-size: 0.95rem;
             color: #4a5568;
             flex-grow: 1;
-            /* biar teks ngisi ruang tengah */
         }
 
         /* responsive */
         @media (max-width: 768px) {
             .feature-card {
                 min-height: 300px;
-                /* sedikit lebih kecil di mobile */
                 padding: 1.5rem;
             }
         }
