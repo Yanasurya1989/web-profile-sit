@@ -46,6 +46,11 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     // Hero
     Route::resource('hero', HeroController::class);
     Route::patch('hero/{id}/toggle', [HeroController::class, 'toggleStatus'])->name('hero.toggle');
+
+    // About
+    // About
+    Route::resource('about', \App\Http\Controllers\Admin\AboutController::class);
+    Route::put('/admin/about/{about}/toggle-status', [AboutController::class, 'toggleStatus'])->name('admin.about.toggle');
 });
 
 

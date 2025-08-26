@@ -58,107 +58,58 @@
     </style>
 
     <div class="container">
-        <!-- ROW 1: Video kiri - Text kanan -->
-        <div class="row align-items-center g-4 mb-5">
-            <!-- Background video -->
-            <div class="col-md-6">
-                <div class="video-wrapper shadow">
-                    <video autoplay muted loop playsinline>
-                        <source src="assets/videos/video-sit.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+        @foreach ($abouts as $about)
+            <div class="row align-items-center g-4 mb-5 {{ $loop->iteration % 2 == 0 ? 'flex-md-row-reverse' : '' }}">
+                <!-- Media (video atau image) -->
+                <div class="col-md-6">
+                    <div class="{{ $about->media_type == 'video' ? 'video-wrapper' : 'image-wrapper' }} shadow">
+                        @if ($about->media_type == 'video')
+                            <video autoplay muted loop playsinline>
+                                <source src="{{ asset($about->media_path) }}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        @else
+                            <img src="{{ asset($about->media_path) }}" alt="{{ $about->title }}" class="img-fluid">
+                        @endif
+                    </div>
+                </div>
+
+                <!-- Text content -->
+                <div class="col-md-6 video-overlay">
+                    <div class="about-subtitle">{{ $about->subtitle }}</div>
+                    <div class="about-title">{{ $about->title }}</div>
+                    <div class="about-desc">
+                        <h4>{{ $about->short_desc }}</h4>
+                        {!! Str::limit($about->long_desc, 250) !!}
+                    </div>
+                    <button class="btn btn-info text-white rounded-pill px-4 mt-3" data-bs-toggle="modal"
+                        data-bs-target="#aboutModal{{ $about->id }}">
+                        Selengkapnya
+                    </button>
                 </div>
             </div>
 
-            <!-- Text content -->
-            <div class="col-md-6 video-overlay">
-                <div class="about-subtitle">Profil</div>
-                <div class="about-title">SIT Qordova</div>
-                <div class="about-desc">
-                    <h4>Pendirian SMPIT Qordova (2006)</h4>
-                    Langkah pertama yang diambil Yayasan Amal Insan Rabbani dalam dunia pendidikan adalah mendirikan
-                    Sekolah Menengah Pertama Islam Terpadu (SMPIT) Qordova pada tahun 2006. Sekolah ini didirikan dengan
-                    tujuan untuk menyediakan pendidikan berbasis nilai-nilai Islami yang berkualitas, sehingga dapat
-                    membentuk siswa yang cerdas, berakhlak, dan berdaya saing.
-                </div>
-                <button class="btn btn-info text-white rounded-pill px-4 mt-3" data-bs-toggle="modal"
-                    data-bs-target="#aboutModal">
-                    Selengkapnya
-                </button>
-            </div>
-        </div>
-
-
-        <div class="row align-items-center g-4 flex-md-row-reverse">
-            <!-- Image -->
-            <div class="col-md-6">
-                <div class="image-wrapper shadow">
-                    <img src="assets/images/pengurus/about_us.png" alt="Tentang SIT Qordova" class="img-fluid">
+            <!-- Modal -->
+            <div class="modal fade" id="aboutModal{{ $about->id }}" tabindex="-1"
+                aria-labelledby="aboutModalLabel{{ $about->id }}" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header bg-info text-white">
+                            <h5 class="modal-title" id="aboutModalLabel{{ $about->id }}">{{ $about->title }}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Tutup"></button>
+                        </div>
+                        <div class="modal-body text-muted">
+                            <h5>{{ $about->short_desc }}</h5>
+                            <p>{!! $about->long_desc !!}</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary rounded-pill"
+                                data-bs-dismiss="modal">Tutup</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <!-- Text content -->
-            <div class="col-md-6 video-overlay">
-                <div class="about-subtitle">Yayasan</div>
-                <div class="about-title">Amal Insan Rabbany</div>
-                <div class="about-desc">
-                    <h4>Perkembangan SIT Qordova</h4>
-                    Setelah berdirinya SMPIT Qordova, Yayasan terus melanjutkan kiprahnya dalam pendidikan dengan
-                    mendirikan SDIT pada tahun 2007 dan SMAIT pada tahun 2018. Kehadiran sekolah-sekolah ini semakin
-                    memperkokoh peran SIT Qordova dalam memberikan pendidikan berkualitas yang Islami, modern, dan
-                    membekali siswa dengan kecakapan hidup yang bermanfaat.
-                </div>
-                <button class="btn btn-info text-white rounded-pill px-4 mt-3" data-bs-toggle="modal"
-                    data-bs-target="#historyModal">
-                    Selengkapnya
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Profil -->
-    <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header bg-info text-white">
-                    <h5 class="modal-title" id="aboutModalLabel">Tentang SIT Qordova</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
-                </div>
-                <div class="modal-body text-muted">
-                    <h5>Pendirian SMPIT Qordova (2006)</h5>
-                    <p>
-                        Langkah pertama yang diambil Yayasan Amal Insan Rabbani dalam dunia pendidikan adalah mendirikan
-                        Sekolah Menengah Pertama Islam Terpadu (SMPIT) Qordova pada tahun 2006...
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Tutup</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Sejarah -->
-    <div class="modal fade" id="historyModal" tabindex="-1" aria-labelledby="historyModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header bg-info text-white">
-                    <h5 class="modal-title" id="historyModalLabel">Sejarah SIT Qordova</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
-                </div>
-                <div class="modal-body text-muted">
-                    <h5>Perjalanan Pendidikan</h5>
-                    <p>
-                        Setelah berdirinya SMPIT Qordova pada tahun 2006, Yayasan terus mengembangkan jenjang pendidikan
-                        dengan mendirikan SDIT pada tahun 2007 dan SMAIT pada tahun 2018. Dengan adanya jenjang yang
-                        lengkap, SIT Qordova berkomitmen untuk membimbing siswa dari dasar hingga menengah atas dengan
-                        kualitas pendidikan Islami yang unggul.
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Tutup</button>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
 </section>

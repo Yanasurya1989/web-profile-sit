@@ -18,8 +18,36 @@
 
             <div class="mb-3">
                 <label>Gambar</label><br>
-                <img src="{{ asset('storage/' . $hero->image) }}" width="150" class="mb-2">
+                <img src="{{ asset($hero->image) }}" width="150" class="mb-2">
                 <input type="file" name="image" class="form-control">
+            </div>
+
+            {{-- Tombol Primary --}}
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label>Teks Tombol Utama</label>
+                    <input type="text" name="btn_primary_text" class="form-control" value="{{ $hero->btn_primary_text }}"
+                        placeholder="Contoh: Pelajari Lebih Lanjut">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label>Link Tombol Utama</label>
+                    <input type="url" name="btn_primary_link" class="form-control" value="{{ $hero->btn_primary_link }}"
+                        placeholder="https://contoh.com/primary">
+                </div>
+            </div>
+
+            {{-- Tombol Secondary --}}
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label>Teks Tombol Kedua</label>
+                    <input type="text" name="btn_secondary_text" class="form-control"
+                        value="{{ $hero->btn_secondary_text }}" placeholder="Contoh: Hubungi Kami">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label>Link Tombol Kedua</label>
+                    <input type="url" name="btn_secondary_link" class="form-control"
+                        value="{{ $hero->btn_secondary_link }}" placeholder="https://contoh.com/secondary">
+                </div>
             </div>
 
             <div class="mb-3">

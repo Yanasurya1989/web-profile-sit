@@ -26,6 +26,10 @@ class HeroController extends Controller
             'description' => 'required',
             'image' => 'required|image|max:2048',
             'status' => 'required|boolean',
+            'btn_primary_text' => 'nullable|string|max:255',
+            'btn_primary_link' => 'nullable|url',
+            'btn_secondary_text' => 'nullable|string|max:255',
+            'btn_secondary_link' => 'nullable|url',
         ]);
 
         $path = $request->file('image')->store('hero', 'public');
@@ -35,6 +39,10 @@ class HeroController extends Controller
             'description' => $request->description,
             'image' => 'storage/' . $path,
             'status' => $request->status,
+            'btn_primary_text' => $request->btn_primary_text,
+            'btn_primary_link' => $request->btn_primary_link,
+            'btn_secondary_text' => $request->btn_secondary_text,
+            'btn_secondary_link' => $request->btn_secondary_link,
         ]);
 
         return redirect()->route('admin.hero.index')->with('success', 'Hero berhasil ditambahkan');
@@ -52,13 +60,25 @@ class HeroController extends Controller
             'description' => 'required',
             'image' => 'nullable|image|max:2048',
             'status' => 'required|boolean',
+            'btn_primary_text' => 'nullable|string|max:255',
+            'btn_primary_link' => 'nullable|url',
+            'btn_secondary_text' => 'nullable|string|max:255',
+            'btn_secondary_link' => 'nullable|url',
         ]);
 
-        $data = $request->only(['title', 'description', 'status']);
+        $data = $request->only([
+            'title',
+            'description',
+            'status',
+            'btn_primary_text',
+            'btn_primary_link',
+            'btn_secondary_text',
+            'btn_secondary_link',
+        ]);
 
         if ($request->hasFile('image')) {
             $path = $request->file('image')->store('hero', 'public');
-            $data['image'] = 'storage/' . $path; // tambahin storage/
+            $data['image'] = 'storage/' . $path;
         }
 
         $hero->update($data);

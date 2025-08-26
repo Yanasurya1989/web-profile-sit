@@ -44,7 +44,7 @@
                     <div class="card-body text-center">
                         <h5 class="card-title">Kelola About</h5>
                         <p class="card-text">Edit informasi tentang kami.</p>
-                        <a href="#" class="btn btn-warning">Lihat About</a>
+                        <a href="{{ route('admin.about.index') }}" class="btn btn-warning">Lihat About</a>
                     </div>
                 </div>
             </div>
