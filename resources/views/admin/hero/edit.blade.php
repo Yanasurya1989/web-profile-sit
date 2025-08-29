@@ -31,7 +31,7 @@
                 </div>
                 <div class="col-md-6 mb-3">
                     <label>Link Tombol Utama</label>
-                    <input type="url" name="btn_primary_link" class="form-control" value="{{ $hero->btn_primary_link }}"
+                    <input type="text" name="btn_primary_link" class="form-control" value="{{ $hero->btn_primary_link }}"
                         placeholder="https://contoh.com/primary">
                 </div>
             </div>
@@ -45,7 +45,7 @@
                 </div>
                 <div class="col-md-6 mb-3">
                     <label>Link Tombol Kedua</label>
-                    <input type="url" name="btn_secondary_link" class="form-control"
+                    <input type="text" name="btn_secondary_link" class="form-control"
                         value="{{ $hero->btn_secondary_link }}" placeholder="https://contoh.com/secondary">
                 </div>
             </div>

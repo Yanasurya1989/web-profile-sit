@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\RegistrationController;
 
 // =====================
 // Auth
@@ -48,26 +49,18 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::patch('hero/{id}/toggle', [HeroController::class, 'toggleStatus'])->name('hero.toggle');
 
     // About
-    // About
     Route::resource('about', \App\Http\Controllers\Admin\AboutController::class);
     Route::put('/admin/about/{about}/toggle-status', [AboutController::class, 'toggleStatus'])->name('admin.about.toggle');
 });
 
 
-
+// Halaman detail per jenjang
 Route::view('/jenjang/sd', 'jenjang.sd')->name('jenjang.sd');
 Route::view('/jenjang/smp', 'jenjang.smp')->name('jenjang.smp');
 Route::view('/jenjang/sma', 'jenjang.sma')->name('jenjang.sma');
 
+// Proses submit form pendaftaran
+Route::post('/register/submit', [RegistrationController::class, 'store'])->name('register.submit');
 
-Route::post('/register', function (\Illuminate\Http\Request $request) {
-    $level = $request->input('level');
-    if ($level == 'SD') {
-        return redirect()->route('jenjang.sd');
-    } elseif ($level == 'SMP') {
-        return redirect()->route('jenjang.smp');
-    } elseif ($level == 'SMA') {
-        return redirect()->route('jenjang.sma');
-    }
-    return back()->with('error', 'Jenjang belum dipilih');
-})->name('register.submit');
+// Optional: detail dinamis berdasarkan level
+Route::get('/register/{level}', [RegistrationController::class, 'detail'])->name('register.detail');

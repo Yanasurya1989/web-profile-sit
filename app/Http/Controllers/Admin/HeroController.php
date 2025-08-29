@@ -62,8 +62,19 @@ class HeroController extends Controller
             'status' => 'required|boolean',
             'btn_primary_text' => 'nullable|string|max:255',
             'btn_primary_link' => 'nullable|url',
-            'btn_secondary_text' => 'nullable|string|max:255',
-            'btn_secondary_link' => 'nullable|url',
+            'btn_primary_link' => [
+                'nullable',
+                'string',
+                'max:255',
+                'regex:/^(https?:\/\/|#|\/).*/'
+            ],
+            'btn_secondary_link' => [
+                'nullable',
+                'string',
+                'max:255',
+                'regex:/^(https?:\/\/|#|\/).*/'
+            ],
+
         ]);
 
         $data = $request->only([

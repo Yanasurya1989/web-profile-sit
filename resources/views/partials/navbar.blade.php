@@ -27,7 +27,7 @@
                 </li>
 
                 <li class="nav-item ms-3">
-                    <a class="btn btn-success btn-sm" href="https://wa.me/6289601353957" target="_blank">
+                    <a class="btn btn-success btn-sm" href="#register">
                         Daftar Sekarang
                     </a>
                 </li>
