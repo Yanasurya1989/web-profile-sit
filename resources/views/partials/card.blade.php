@@ -1,4 +1,4 @@
-<section id="about-stats" class="py-5" style="background: #fdfdfd;">
+<section id="about-stats" class="py-5 mt-5" style="background: #fdfdfd;">
     <style>
         .stats-title {
             font-size: 2rem;
@@ -39,80 +39,20 @@
             font-size: 1rem;
             color: #4a5568;
         }
-
-        .feature-card {
-            background: #fff;
-            border-radius: 1rem;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            height: 100%;
-            min-height: 350px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-        }
-
-        .feature-card img {
-            width: 60px;
-            height: 60px;
-            object-fit: contain;
-            margin: 0 auto 1rem auto;
-        }
-
-        .feature-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #2c5282;
-            margin-bottom: 0.5rem;
-        }
-
-        .feature-desc {
-            font-size: 0.95rem;
-            color: #4a5568;
-            flex-grow: 1;
-        }
-
-        /* responsive */
-        @media (max-width: 768px) {
-            .feature-card {
-                min-height: 300px;
-                padding: 1.5rem;
-            }
-        }
     </style>
 
     <div class="container">
         <div class="stats-title">About Us</div>
         <div class="row g-4">
-            <div class="col-md-3 col-6">
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="bi bi-people-fill"></i></div>
-                    <div class="stat-number" data-target="1079">0</div>
-                    <div class="stat-label">Siswa</div>
+            @foreach ($stats as $stat)
+                <div class="col-md-3 col-6">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="{{ $stat->icon }}"></i></div>
+                        <div class="stat-number" data-target="{{ $stat->number }}">0</div>
+                        <div class="stat-label">{{ $stat->label }}</div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-3 col-6">
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="bi bi-person-badge-fill"></i></div>
-                    <div class="stat-number" data-target="132">0</div>
-                    <div class="stat-label">Tenaga Pendidik</div>
-                </div>
-            </div>
-            <div class="col-md-3 col-6">
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="bi bi-building"></i></div>
-                    <div class="stat-number" data-target="40">0</div>
-                    <div class="stat-label">Ruang Kelas</div>
-                </div>
-            </div>
-            <div class="col-md-3 col-6">
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="bi bi-award-fill"></i></div>
-                    <div class="stat-number" data-target="2500">0</div>
-                    <div class="stat-label">Alumnus</div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 

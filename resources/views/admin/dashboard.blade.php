@@ -55,7 +55,7 @@
                     <div class="card-body text-center">
                         <h5 class="card-title">Kelola Muwashofat</h5>
                         <p class="card-text">Atur konten muwashofat di halaman depan.</p>
-                        <a href="#" class="btn btn-danger">Lihat Muwashofat</a>
+                        <a href="{{ route('admin.muwashofat.index') }}" class="btn btn-danger">Lihat Muwashofat</a>
                     </div>
                 </div>
             </div>
@@ -65,8 +65,8 @@
                 <div class="card shadow-sm border-0">
                     <div class="card-body text-center">
                         <h5 class="card-title">Kelola Register</h5>
-                        <p class="card-text">Atur form pendaftaran siswa baru.</p>
-                        <a href="#" class="btn btn-dark">Lihat Register</a>
+                        <p class="card-text">Melihat list data yang mengisi form pendaftara.</p>
+                        <a href="{{ route('admin.register.index') }}" class="btn btn-dark">Lihat Register</a>
                     </div>
                 </div>
             </div>
@@ -77,7 +77,20 @@
                     <div class="card-body text-center">
                         <h5 class="card-title">Kelola Footer</h5>
                         <p class="card-text">Atur informasi footer (kontak, sosmed, dll).</p>
-                        <a href="#" class="btn btn-secondary">Lihat Footer</a>
+                        <a href="{{ route('admin.footer.index') }}" class="btn btn-secondary">Lihat Footer</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kelola Detil Jenjang -->
+            <div class="col-md-4 mb-3">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Kelola Detil Jenjang</h5>
+                        <p class="card-text">Atur halaman detil setiap unit.</p>
+                        <a href="{{ route('admin.detil-jenjang.index') }}" class="btn btn-outline-primary">
+                            Lihat Detil Jenjang
+                        </a>
                     </div>
                 </div>
             </div>

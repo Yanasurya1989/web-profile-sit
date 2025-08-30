@@ -1,52 +1,5 @@
 <section id="features" class="py-5" style="background: linear-gradient(to right, #ffffff, #f0f9ff);">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-    <style>
-        .feature-card {
-            background: #fff;
-            border-radius: 1rem;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            height: 100%;
-            min-height: 380px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .feature-card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .feature-card-body {
-            padding: 1.5rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            text-align: center;
-        }
-
-        .feature-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #2c5282;
-            margin-bottom: 0.5rem;
-        }
-
-        .feature-desc {
-            font-size: 0.95rem;
-            color: #4a5568;
-        }
-
-        /* responsive */
-        @media (max-width: 768px) {
-            .feature-card-body {
-                padding: 1rem;
-            }
-        }
-    </style>
 
     <div class="container">
         <h2 class="text-center mb-5">Keunggulan SIT Qordova</h2>
@@ -54,88 +7,30 @@
         <!-- Swiper Container -->
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
-                <!-- Item 1 -->
-                <div class="swiper-slide">
-                    <div class="feature-card">
-                        <img src="assets/images/muwashofat/basket.jfif" alt="Shalat">
-                        <div class="feature-card-body">
-                            <div class="feature-title">Shalat dan Ibadah dengan Kesadaran</div>
-                            <div class="feature-desc">
-                                Kami menanamkan kesadaran akan pentingnya shalat dan ibadah dalam kehidupan sehari-hari
-                                siswa.
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @foreach ($muwashofats as $m)
+                    <div class="swiper-slide">
+                        <div class="feature-card">
+                            <img src="{{ asset('storage/' . $m->image) }}" alt="{{ $m->title }}">
+                            <div class="feature-card-body">
+                                <div class="feature-title">{{ $m->title }}</div>
 
-                <!-- Item 2 -->
-                <div class="swiper-slide">
-                    <div class="feature-card">
-                        <img src="assets/images/muwashofat/karate.jfif" alt="Quran">
-                        <div class="feature-card-body">
-                            <div class="feature-title">Hafal Al-Qur'an Minimal 2 Juz</div>
-                            <div class="feature-desc">
-                                Siswa ditargetkan menghafal minimal 2 juz sebagai cahaya dalam kehidupan mereka.
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                {{-- Potong deskripsi --}}
+                                <div class="feature-desc">
+                                    {{ Str::limit($m->description, 100) }}
+                                </div>
 
-                <!-- Item 3 -->
-                <div class="swiper-slide">
-                    <div class="feature-card">
-                        <img src="assets/images/muwashofat/robotik.jfif" alt="Membaca Quran">
-                        <div class="feature-card-body">
-                            <div class="feature-title">Fasih dan Lancar Membaca Al-Qur'an</div>
-                            <div class="feature-desc">
-                                Melalui program intensif, siswa dilatih melafalkan Al-Qur'an sesuai tajwid.
+                                {{-- Tombol lihat selengkapnya --}}
+                                <a href="{{ route('muwashofat.show', $m->id) }}"
+                                    class="btn btn-info text-white rounded-pill mt-3 px-3">
+                                    Selengkapnya
+                                </a>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Item 4 -->
-                <div class="swiper-slide">
-                    <div class="feature-card">
-                        <img src="assets/images/muwashofat/taekwondo.jfif" alt="Orang tua">
-                        <div class="feature-card-body">
-                            <div class="feature-title">Hormat dan Patuh kepada Orangtua</div>
-                            <div class="feature-desc">
-                                Kami mendidik siswa untuk menghormati dan mematuhi orang tua mereka sebagai ajaran
-                                Islam.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 5 -->
-                <div class="swiper-slide">
-                    <div class="feature-card">
-                        <img src="assets/images/muwashofat/menggambar.jfif" alt="Hadist">
-                        <div class="feature-card-body">
-                            <div class="feature-title">Hafal Hadist dan Do'a Pilihan</div>
-                            <div class="feature-desc">
-                                Siswa menghafal hadist dan doa pilihan sebagai bekal akhlak mulia.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 6 -->
-                <div class="swiper-slide">
-                    <div class="feature-card">
-                        <img src="assets/images/muwashofat/coding.jfif" alt="Komputer">
-                        <div class="feature-card-body">
-                            <div class="feature-title">Mampu Mengoperasikan Komputer Dasar</div>
-                            <div class="feature-desc">
-                                Kami membekali siswa kemampuan dasar teknologi agar siap di era digital.
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
 
-            <!-- Pagination -->
+            <!-- Pagination harus di dalam swiper -->
             <div class="swiper-pagination mt-3"></div>
         </div>
     </div>
@@ -168,3 +63,144 @@
         });
     </script>
 </section>
+<style>
+    /* Card */
+    .feature-card {
+        background: #fff;
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .feature-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .feature-card-body {
+        padding: 1rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .feature-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: #0d6efd;
+    }
+
+    .feature-desc {
+        font-size: 0.95rem;
+        color: #555;
+    }
+
+    /* Modal */
+    .modal-content {
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .modal-header {
+        border-bottom: none;
+        padding: 1rem 1.5rem;
+    }
+
+    .modal-body img {
+        max-height: 250px;
+        object-fit: cover;
+        border-radius: 0.75rem;
+    }
+
+    .modal-body p {
+        font-size: 1rem;
+        line-height: 1.6;
+        color: #444;
+        margin-top: 1rem;
+    }
+
+    .modal-footer {
+        border-top: none;
+        padding: 1rem 1.5rem;
+    }
+
+    /* Swiper Pagination */
+    .swiper-pagination-bullet {
+        background: #0d6efd;
+        opacity: 0.6;
+    }
+
+    .swiper-pagination-bullet-active {
+        background: #0d6efd;
+        opacity: 1;
+    }
+
+    /* Modal Styling */
+    .modal-content {
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        animation: fadeInScale 0.3s ease;
+    }
+
+    .modal-header {
+        border-bottom: none;
+        padding: 1rem 1.5rem;
+        background: linear-gradient(90deg, #0d6efd, #17a2b8);
+        color: #fff;
+    }
+
+    .modal-title {
+        font-weight: 600;
+    }
+
+    .modal-body {
+        padding: 1.5rem;
+        text-align: center;
+    }
+
+    .modal-body img {
+        max-height: 300px;
+        object-fit: cover;
+        border-radius: 0.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .modal-body p {
+        font-size: 1rem;
+        line-height: 1.6;
+        color: #444;
+        text-align: justify;
+    }
+
+    .modal-footer {
+        border-top: none;
+        padding: 1rem 1.5rem;
+        justify-content: center;
+    }
+
+    @keyframes fadeInScale {
+        from {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+</style>
