@@ -1,4 +1,4 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 
 @section('content')
     @include('partials.hero')
@@ -8,4 +8,12 @@
     @include('partials.news')
     @include('partials.register')
     @include('partials.footer')
+@endsection --}}
+
+@extends('layouts.app')
+
+@section('content')
+    @foreach ($sections as $section)
+        @includeIf('partials.' . $section->key)
+    @endforeach
 @endsection

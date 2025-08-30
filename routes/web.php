@@ -5,10 +5,12 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\FooterController;
+use App\Http\Controllers\NavbarController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\MuwashofatController;
 use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DetilJenjangController;
 use App\Http\Controllers\Frontend\DetilJenjangFrontendController;
@@ -65,6 +67,13 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
 
     Route::get('/registrations', [RegistrationController::class, 'index'])
         ->name('register.index');
+
+    Route::get('navbar/edit', [NavbarController::class, 'edit'])->name('navbar.edit');
+    Route::put('navbar/update', [NavbarController::class, 'update'])->name('navbar.update');
+
+    Route::get('section', [SectionController::class, 'index'])->name('section.index');
+    Route::patch('section/{section}/toggle', [SectionController::class, 'toggleActive'])->name('section.toggle');
+    Route::post('section/update-order', [SectionController::class, 'updateOrder'])->name('section.updateOrder');
 });
 
 

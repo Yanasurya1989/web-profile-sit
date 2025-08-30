@@ -1,8 +1,8 @@
 <nav id="main-navbar" class="navbar navbar-expand-lg fixed-top">
     <div class="container">
         <a class="navbar-brand fw-bold" href="#hero-carousel">
-            <img src="{{ asset('assets/images/logo/logo.png') }}" alt="Logo" width="70" height="50"
-                class="d-inline-block align-text-top">
+            <img src="{{ $navbar && $navbar->logo ? asset('storage/' . $navbar->logo) : asset('assets/images/logo/logo.png') }}"
+                alt="Logo" width="70" height="50" class="d-inline-block align-text-top">
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -12,23 +12,22 @@
 
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav align-items-center">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#hero-carousel">Beranda</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#about">Tentang Kami</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#features">Keunggulan</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#news">Berita</a>
-                </li>
+                @if ($navbar && $navbar->menus)
+                    @foreach ($navbar->menus as $menu)
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ $menu['link'] }}">{{ $menu['title'] }}</a>
+                        </li>
+                    @endforeach
+                @else
+                    <li class="nav-item"><a class="nav-link active" href="#hero-carousel">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">Tentang Kami</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#features">Keunggulan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#news">Berita</a></li>
+                @endif
 
                 <li class="nav-item ms-3">
-                    <a class="btn btn-success btn-sm" href="#register">
-                        Daftar Sekarang
+                    <a class="btn btn-success btn-sm" href="{{ $navbar->button_link ?? '#register' }}">
+                        {{ $navbar->button_label ?? 'Daftar Sekarang' }}
                     </a>
                 </li>
             </ul>

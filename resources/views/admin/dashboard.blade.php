@@ -94,6 +94,31 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Kelola Navbar -->
+            <div class="col-md-4 mb-3">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Kelola Navbar</h5>
+                        <p class="card-text">Ubah logo, menu, dan tombol Daftar pada navbar.</p>
+                        <a href="{{ route('admin.navbar.edit') }}" class="btn btn-primary">Lihat Navbar</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kelola Section -->
+            <div class="col-md-4 mb-3">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Kelola Section</h5>
+                        <p class="card-text">
+                            Atur urutan section di halaman depan dan aktif/nonaktifkan setiap section.
+                        </p>
+                        <a href="{{ route('admin.section.index') }}" class="btn btn-info">Lihat Section</a>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 @endsection
