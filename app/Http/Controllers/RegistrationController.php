@@ -41,7 +41,7 @@ class RegistrationController extends Controller
         }
 
         $detils = \App\Models\DetilJenjang::where('level', strtoupper($level))
-            ->where('status', 1) // gunakan 1 (boolean) bukan 'active'
+            ->where('status', 1)
             ->get();
 
         return view('jenjang.' . $level, compact('detils'));

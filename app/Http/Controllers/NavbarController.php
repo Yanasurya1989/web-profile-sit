@@ -10,7 +10,7 @@ class NavbarController extends Controller
     // Tampilkan navbar (untuk admin)
     public function edit()
     {
-        $navbar = Navbar::first(); // kita simpan hanya 1 row
+        $navbar = Navbar::first();
         return view('admin.navbar.edit', compact('navbar'));
     }
 
