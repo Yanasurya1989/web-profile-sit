@@ -5,8 +5,9 @@
             <!-- Kiri: Logo & Info -->
             <div class="col-md-4 mb-4">
                 <div class="d-flex align-items-center mb-3">
-                    <img src="{{ asset('storage/' . $footer->logo) }}" alt="Logo {{ $footer->school_name ?? 'Qordova' }}"
-                        style="width:50px; height:50px; object-fit:contain; margin-right:10px;">
+                    {{-- <img src="{{ asset('storage/' . $footer->logo) }}" alt="Logo {{ $footer->school_name ?? 'Qordova' }}"
+                        style="width:50px; height:50px; object-fit:contain; margin-right:10px;"> --}}
+                    <img src="{{ asset('footer/' . $footer->logo) }}" alt="Logo" width="80" class="mb-3">
                     <h4 class="m-0 fw-bold">{{ $footer->school_name ?? 'SIT Qordova' }}</h4>
                 </div>
                 <p class="text-light" style="font-size: 0.95rem; line-height:1.6;">

@@ -29,10 +29,25 @@ class NavbarController extends Controller
         $navbar = Navbar::first();
 
         // Upload logo jika ada
+        // if ($request->hasFile('logo')) {
+        //     $path = $request->file('logo')->store('logos', 'public');
+        //     $validated['logo'] = $path;
+        // }
+
         if ($request->hasFile('logo')) {
-            $path = $request->file('logo')->store('logos', 'public');
-            $validated['logo'] = $path;
+            // Hapus logo lama kalau ada
+            if ($navbar && $navbar->logo && file_exists(public_path('navbar/' . $navbar->logo))) {
+                unlink(public_path('navbar/' . $navbar->logo));
+            }
+
+            // Upload baru
+            $file = $request->file('logo');
+            $filename = uniqid() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('navbar'), $filename);
+            $validated['logo'] = $filename;
         }
+
+
 
         if (!$navbar) {
             Navbar::create($validated);

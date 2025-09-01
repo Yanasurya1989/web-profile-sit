@@ -1,9 +1,16 @@
 <nav id="main-navbar" class="navbar navbar-expand-lg fixed-top">
     <div class="container">
-        <a class="navbar-brand fw-bold" href="#hero-carousel">
+        {{-- <a class="navbar-brand fw-bold" href="#hero-carousel">
             <img src="{{ $navbar && $navbar->logo ? asset('storage/' . $navbar->logo) : asset('assets/images/logo/logo.png') }}"
                 alt="Logo" width="70" height="50" class="d-inline-block align-text-top">
+        </a> --}}
+
+        <a class="navbar-brand fw-bold" href="#hero-carousel">
+            <img src="{{ $navbar && $navbar->logo ? asset('navbar/' . $navbar->logo) : asset('assets/images/logo/logo.png') }}"
+                alt="Logo" width="70" height="50" class="d-inline-block align-text-top">
+
         </a>
+
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

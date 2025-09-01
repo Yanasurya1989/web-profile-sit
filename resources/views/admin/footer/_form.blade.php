@@ -1,8 +1,16 @@
-<div class="mb-3">
+{{-- <div class="mb-3">
     <label>Logo</label>
     <input type="file" name="logo" class="form-control">
     @if (!empty($footer->logo))
         <img src="{{ asset('storage/' . $footer->logo) }}" width="80" class="mt-2">
+    @endif
+</div> --}}
+
+<div class="mb-3">
+    <label>Logo</label>
+    <input type="file" name="logo" class="form-control">
+    @if (!empty($footer->logo))
+        <img src="{{ asset('footer/' . $footer->logo) }}" width="80" class="mt-2">
     @endif
 </div>
 

@@ -16,7 +16,7 @@
                 <label>Logo</label>
                 <input type="file" name="logo" class="form-control">
                 @if ($navbar && $navbar->logo)
-                    <img src="{{ asset('storage/' . $navbar->logo) }}" alt="Logo" width="120" class="mt-2">
+                    <img src="{{ asset('navbar/' . $navbar->logo) }}" alt="Logo" width="120" class="mt-2">
                 @endif
             </div>
 

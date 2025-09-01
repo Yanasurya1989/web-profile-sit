@@ -11,9 +11,14 @@
         @if ($footer)
             <div class="card mt-4">
                 <div class="card-body">
-                    @if ($footer->logo)
+                    {{-- @if ($footer->logo)
                         <img src="{{ asset('storage/' . $footer->logo) }}" alt="Logo" width="80" class="mb-3">
+                    @endif --}}
+
+                    @if ($footer->logo)
+                        <img src="{{ asset('footer/' . $footer->logo) }}" alt="Logo" width="80" class="mb-3">
                     @endif
+
 
                     <h4>{{ $footer->school_name }}</h4>
                     <p>{{ $footer->address }}</p>
