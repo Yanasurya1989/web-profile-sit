@@ -18,7 +18,8 @@
         </button>
 
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav align-items-center">
+            {{-- <ul class="navbar-nav align-items-center">           
+
                 @if ($navbar && $navbar->menus)
                     @foreach ($navbar->menus as $menu)
                         <li class="nav-item">
@@ -27,13 +28,36 @@
                     @endforeach
                 @else
                     <li class="nav-item"><a class="nav-link active" href="#hero-carousel">Beranda</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">Tentang Kami</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url('/#about') }}">Tentang Kami</a></li>
                     <li class="nav-item"><a class="nav-link" href="#features">Keunggulan</a></li>
                     <li class="nav-item"><a class="nav-link" href="#news">Berita</a></li>
                 @endif
 
                 <li class="nav-item ms-3">
                     <a class="btn btn-success btn-sm" href="{{ $navbar->button_link ?? '#register' }}">
+                        {{ $navbar->button_label ?? 'Daftar Sekarang' }}
+                    </a>
+                </li>
+            </ul> --}}
+            <ul class="navbar-nav align-items-center">
+                @if ($navbar && $navbar->menus)
+                    @foreach ($navbar->menus as $menu)
+                        @php
+                            $link = $menu['link'];
+                            // Kalau link diawali dengan '#', tambahkan base url ('/')
+                            if (Str::startsWith($link, '#')) {
+                                $link = url('/') . $link;
+                            }
+                        @endphp
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ $link }}">{{ $menu['title'] }}</a>
+                        </li>
+                    @endforeach
+                @endif
+
+                <li class="nav-item ms-3">
+                    <a class="btn btn-success btn-sm" href="{{ $navbar->button_link ?? url('/#register') }}">
                         {{ $navbar->button_label ?? 'Daftar Sekarang' }}
                     </a>
                 </li>
