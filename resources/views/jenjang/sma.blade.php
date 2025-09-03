@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid p-0">
         @forelse ($detils as $item)
-            <img src="{{ asset('storage/' . $item->gambar) }}" class="img-fluid w-100 d-block" style="margin:0; padding:0;"
+            <img src="{{ asset($item->gambar) }}" class="img-fluid w-100 d-block" style="margin:0; padding:0;"
                 alt="{{ $item->judul }}">
         @empty
             <div class="p-3 text-center">

@@ -47,9 +47,16 @@ class DetilJenjangController extends Controller
             'link_pendaftaran' => 'nullable|url',
         ]);
 
+        // if ($request->hasFile('gambar')) {
+        //     $validated['gambar'] = $request->file('gambar')->store('detil_jenjang', 'public');
+        // }
+
         if ($request->hasFile('gambar')) {
-            $validated['gambar'] = $request->file('gambar')->store('detil_jenjang', 'public');
+            $filename = time() . '.' . $request->file('gambar')->getClientOriginalExtension();
+            $request->file('gambar')->move(public_path('detil_jenjang'), $filename);
+            $validated['gambar'] = 'detil_jenjang/' . $filename;
         }
+
 
         $validated['status'] = 1;
 
@@ -94,9 +101,16 @@ class DetilJenjangController extends Controller
             'link_pendaftaran' => 'nullable|url',
         ]);
 
+        // if ($request->hasFile('gambar')) {
+        //     $validated['gambar'] = $request->file('gambar')->store('detil_jenjang', 'public');
+        // }
+
         if ($request->hasFile('gambar')) {
-            $validated['gambar'] = $request->file('gambar')->store('detil_jenjang', 'public');
+            $filename = time() . '.' . $request->file('gambar')->getClientOriginalExtension();
+            $request->file('gambar')->move(public_path('detil_jenjang'), $filename);
+            $validated['gambar'] = 'detil_jenjang/' . $filename;
         }
+
 
         $detilJenjang->update($validated);
 

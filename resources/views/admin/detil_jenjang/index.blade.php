@@ -25,7 +25,9 @@
                         <td>{{ $detil->level }}</td>
                         <td>
                             @if ($detil->gambar)
-                                <img src="{{ asset('storage/' . $detil->gambar) }}" width="100">
+                                <img src="{{ asset($detil->gambar) }}" width="100">
+                                {{-- <img src="{{ asset('storage/' . $detil->gambar) }}" width="100"> --}}
+                                {{-- <img src="{{ asset($item->gambar) }}"> --}}
                             @endif
                         </td>
 

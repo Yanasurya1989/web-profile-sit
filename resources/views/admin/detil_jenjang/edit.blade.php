@@ -28,7 +28,9 @@
                 <input type="file" name="gambar" class="form-control">
                 @if ($detilJenjang->gambar)
                     <div class="mt-2">
-                        <img src="{{ asset('storage/' . $detilJenjang->gambar) }}" width="150">
+                        {{-- <img src="{{ asset('storage/' . $detilJenjang->gambar) }}" width="150"> --}}
+                        <img src="{{ asset($detilJenjang->gambar) }}" width="150">
+                        {{-- <img src="{{ asset($detil->gambar) }}" width="100"> --}}
                     </div>
                 @endif
                 @error('gambar')
