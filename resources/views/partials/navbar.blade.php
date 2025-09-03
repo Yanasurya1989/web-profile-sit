@@ -117,7 +117,6 @@
 
     .btn-success {
         background-color: #3182ce;
-        /* biru elegan */
         border: none;
         font-weight: 500;
         color: #fff;
