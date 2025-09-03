@@ -44,7 +44,7 @@
                     @foreach ($navbar->menus as $menu)
                         @php
                             $link = $menu['link'];
-                            // Kalau link diawali dengan '#', tambahkan base url ('/')
+                            // Kalo link diawali dengan '#', tambahkan base url ('/')
                             if (Str::startsWith($link, '#')) {
                                 $link = url('/') . $link;
                             }
@@ -77,10 +77,10 @@
 
     /* Navbar Saat Di-scroll */
     #main-navbar.scrolled {
-        background: linear-gradient(90deg, #319795, #3182ce, #63b3ed);
+        background: linear-gradient(90deg, #a7d8f0, #90cdf4, #63b3ed);
         background-size: 200% 200%;
         animation: navbarGradient 15s ease infinite;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
     }
 
     @keyframes navbarGradient {
@@ -97,30 +97,34 @@
         }
     }
 
+
     .navbar-brand {
         color: white !important;
         font-size: 1.2rem;
     }
 
     .navbar-nav .nav-link {
-        color: white !important;
+        color: #ffffff !important;
         font-weight: 500;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
         transition: color 0.2s;
     }
 
     .navbar-nav .nav-link:hover,
     .navbar-nav .nav-link.active {
-        color: #00bfff !important;
+        color: #ffd700 !important;
     }
 
     .btn-success {
-        background-color: #00bfff;
+        background-color: #3182ce;
+        /* biru elegan */
         border: none;
         font-weight: 500;
+        color: #fff;
     }
 
     .btn-success:hover {
-        background-color: #009fd1;
+        background-color: #2b6cb0;
     }
 </style>
 
