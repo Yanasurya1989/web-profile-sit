@@ -14,6 +14,8 @@ use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DetilJenjangController;
 use App\Http\Controllers\Frontend\DetilJenjangFrontendController;
+use App\Http\Controllers\VacancyController;
+use App\Http\Controllers\ApplicationController;
 
 // =====================
 // Auth
@@ -74,9 +76,24 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('section', [SectionController::class, 'index'])->name('section.index');
     Route::patch('section/{section}/toggle', [SectionController::class, 'toggleActive'])->name('section.toggle');
     Route::post('section/update-order', [SectionController::class, 'updateOrder'])->name('section.updateOrder');
+
+    // ✅ Admin Vacancy (backend khusus admin)
+    Route::get('vacancies', [VacancyController::class, 'adminIndex'])->name('vacancies.adminIndex');
+    Route::patch('vacancies/{vacancy}/toggle', [VacancyController::class, 'toggleActive'])->name('vacancies.toggle');
+    Route::resource('vacancies', VacancyController::class)->except(['index']);
+    Route::patch('vacancies/{vacancy}/toggle-status', [VacancyController::class, 'toggleStatus'])
+        ->name('vacancies.toggle-status');
+    Route::patch('/admin/vacancies/{vacancy}/toggle-status', [VacancyController::class, 'toggleStatus'])
+        ->name('admin.vacancies.toggle-status');
+
+    Route::get('/applications', [ApplicationController::class, 'index'])->name('admin.applications.index');
+    // Route::get('/applications/{vacancy}', [ApplicationController::class, 'show'])->name('admin.applications.show');
+    Route::get('/applications/{vacancy}', [ApplicationController::class, 'show'])
+        ->name('applications.show');
+
+    Route::get('/applications', [ApplicationController::class, 'index'])
+        ->name('applications.index');
 });
-
-
 
 // =====================
 // Frontend Jenjang
@@ -84,6 +101,18 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
 Route::get('/jenjang/{level}', [DetilJenjangFrontendController::class, 'showByLevel'])
     ->whereIn('level', ['sd', 'smp', 'sma'])
     ->name('jenjang.show');
+
+// =====================
+// Frontend Vacancy
+// =====================
+Route::get('/vacancies', [VacancyController::class, 'index'])->name('vacancies.index');
+Route::post('/vacancies/notify', [VacancyController::class, 'notify'])->name('vacancies.notify');
+
+// =====================
+// Apply Vacancy (Frontend)
+// =====================
+Route::get('/apply', [ApplicationController::class, 'create'])->name('applications.create');
+Route::post('/apply', [ApplicationController::class, 'store'])->name('applications.store');
 
 // =====================
 // Pendaftaran & Detail Jenjang Dinamis

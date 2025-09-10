@@ -22,5 +22,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             HeroSeeder::class,
         ]);
+
+        $this->call(VacancySeeder::class);
     }
 }

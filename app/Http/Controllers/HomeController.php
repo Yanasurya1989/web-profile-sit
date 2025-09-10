@@ -21,7 +21,11 @@ class HomeController extends Controller
             ->get();
 
         // Ambil data yang dibutuhkan partial
-        $news = News::where('status', 1)->latest()->get();
+        // $news = News::where('status', 1)->latest()->get();
+        $news = News::where('status', 1)
+            ->latest('id')
+            ->limit(3)
+            ->get();
         $heroes = Hero::where('status', 1)->latest()->get();
         $abouts = About::where('status', 1)->latest()->get();
         $stats = Stat::all();
