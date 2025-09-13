@@ -11,6 +11,7 @@ class Application extends Model
 
     protected $fillable = [
         'vacancy_id',
+        'user_id',
         'nama_pelamar',
         'jenis_kelamin',
         'tempat_lahir',
@@ -27,10 +28,16 @@ class Application extends Model
         'cv',
         'transkrip_nilai',
         'foto',
+        'status',
     ];
 
     public function vacancy()
     {
         return $this->belongsTo(Vacancy::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

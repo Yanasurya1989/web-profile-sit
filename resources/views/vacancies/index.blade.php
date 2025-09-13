@@ -73,13 +73,24 @@
                                     <!-- Tombol -->
                                     <div>
                                         @if ($vacancy->status === 'open')
-                                            <a href="#" class="btn btn-success rounded-pill px-4 mt-3">Daftar</a>
+                                            @if (Auth::check())
+                                                <a href="{{ route('applications.create', ['vacancy_id' => $vacancy->id]) }}"
+                                                    class="btn btn-success rounded-pill px-4 mt-3">
+                                                    Daftar
+                                                </a>
+                                            @else
+                                                <a href="{{ route('login') }}"
+                                                    class="btn btn-warning rounded-pill px-4 mt-3">
+                                                    Login untuk Apply
+                                                </a>
+                                            @endif
                                         @else
                                             <button class="btn btn-secondary rounded-pill px-4 mt-3" disabled>
                                                 Pendaftaran Ditutup
                                             </button>
                                         @endif
                                     </div>
+
                                 </div>
                             </div>
                         </div>

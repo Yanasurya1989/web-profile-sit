@@ -11,7 +11,7 @@
                     <div class="card-body text-center">
                         <h5 class="card-title">Kelola Berita</h5>
                         <p class="card-text">Tambah, edit, dan hapus berita terbaru.</p>
-                        <a href="{{ route('admin.news.index') }}" class="btn btn-primary">Lihat Berita</a>
+                        <a href="{{ route('admin.news.index') }}" class="btn btn-primary" target="_blank">Lihat Berita</a>
                     </div>
                 </div>
             </div>
@@ -65,7 +65,7 @@
                 <div class="card shadow-sm border-0">
                     <div class="card-body text-center">
                         <h5 class="card-title">Kelola Register</h5>
-                        <p class="card-text">Melihat list data yang mengisi form pendaftara.</p>
+                        <p class="card-text">Melihat list data yang mengisi form pendaftaran.</p>
                         <a href="{{ route('admin.register.index') }}" class="btn btn-dark">Lihat Register</a>
                     </div>
                 </div>
@@ -115,6 +115,33 @@
                             Atur urutan section di halaman depan dan aktif/nonaktifkan setiap section.
                         </p>
                         <a href="{{ route('admin.section.index') }}" class="btn btn-info">Lihat Section</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kelola Vacancy -->
+            <div class="col-md-4 mb-3">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Kelola Vacancy</h5>
+                        <p class="card-text">
+                            Tambah, edit, hapus, dan atur status lowongan pekerjaan.
+                        </p>
+                        <a href="{{ route('admin.vacancies.adminIndex') }}" class="btn btn-outline-success">Lihat
+                            Vacancy</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kelola Lamaran -->
+            <div class="col-md-4 mb-3">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Kelola Lamaran</h5>
+                        <p class="card-text">
+                            Lihat daftar lamaran yang masuk berdasarkan lowongan.
+                        </p>
+                        <a href="{{ route('admin.applications.index') }}" class="btn btn-outline-danger">Lihat Lamaran</a>
                     </div>
                 </div>
             </div>

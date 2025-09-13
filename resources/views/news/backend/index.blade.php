@@ -1,12 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
-    <div class="container py-5">
+    <div class="container">
         <div class="row align-items-center mb-4">
             <div class="col-auto">
                 {{-- Logo otomatis sudah ada di layout --}}
             </div>
-            <div class="mt-5">
+            <div>
                 <h2 class="mb-4">Manajemen Berita</h2>
             </div>
             <div class="d-flex gap-2 mb-3">

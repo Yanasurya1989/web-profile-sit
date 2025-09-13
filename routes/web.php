@@ -27,6 +27,11 @@ Route::get('/register', [AuthController::class, 'showRegisterForm'])
     ->middleware('guest')->name('register');
 Route::post('/register', [AuthController::class, 'register'])->middleware('guest');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/my-applications', [ApplicationController::class, 'indexUser'])
+        ->name('user.applications.index');
+});
+
 
 // =====================
 // Halaman depan
@@ -86,13 +91,12 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::patch('/admin/vacancies/{vacancy}/toggle-status', [VacancyController::class, 'toggleStatus'])
         ->name('admin.vacancies.toggle-status');
 
-    Route::get('/applications', [ApplicationController::class, 'index'])->name('admin.applications.index');
-    // Route::get('/applications/{vacancy}', [ApplicationController::class, 'show'])->name('admin.applications.show');
-    Route::get('/applications/{vacancy}', [ApplicationController::class, 'show'])
-        ->name('applications.show');
+    Route::get('/applications', [ApplicationController::class, 'index'])->name('applications.index');
+    Route::get('/applications/{vacancy}', [ApplicationController::class, 'show'])->name('applications.show');
+    Route::get('/vacancies/applications/{id}', [ApplicationController::class, 'detil'])->name('applications.detil');
 
-    Route::get('/applications', [ApplicationController::class, 'index'])
-        ->name('applications.index');
+    Route::patch('/applications/{application}/status', [ApplicationController::class, 'updateStatus'])
+        ->name('applications.updateStatus');
 });
 
 // =====================
@@ -108,11 +112,15 @@ Route::get('/jenjang/{level}', [DetilJenjangFrontendController::class, 'showByLe
 Route::get('/vacancies', [VacancyController::class, 'index'])->name('vacancies.index');
 Route::post('/vacancies/notify', [VacancyController::class, 'notify'])->name('vacancies.notify');
 
+
 // =====================
 // Apply Vacancy (Frontend)
 // =====================
-Route::get('/apply', [ApplicationController::class, 'create'])->name('applications.create');
-Route::post('/apply', [ApplicationController::class, 'store'])->name('applications.store');
+Route::middleware('auth')->group(function () {
+    Route::get('/apply', [ApplicationController::class, 'create'])->name('applications.create');
+    Route::post('/apply', [ApplicationController::class, 'store'])->name('applications.store');
+});
+
 
 // =====================
 // Pendaftaran & Detail Jenjang Dinamis

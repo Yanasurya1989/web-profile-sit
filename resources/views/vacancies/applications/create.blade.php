@@ -1,26 +1,56 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container py-5">
+    <div class="container">
+
         <h2 class="mb-4 text-success fw-bold mt-5 pt-5">Form Lamaran</h2>
+
+        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            Logout
+        </a>
+
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">
+            @csrf
+        </form>
 
         @if (session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
+        @endif
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <strong>Ups! Ada kesalahan:</strong>
+                <ul class="mb-0">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
         @endif
 
         <form action="{{ route('applications.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <!-- Pilihan Lowongan -->
-            <div class="mb-3">
-                <label class="form-label">Pilih Lowongan</label>
-                @foreach ($vacancies as $v)
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="vacancy_id" value="{{ $v->id }}">
-                        <label class="form-check-label">{{ $v->title }}</label>
-                    </div>
-                @endforeach
-            </div>
+            @if ($selectedVacancyId)
+                {{-- Sudah dipilih dari tombol "Daftar" --}}
+                <input type="hidden" name="vacancy_id" value="{{ $selectedVacancyId }}">
+                <div class="alert alert-info">
+                    Anda sedang melamar untuk posisi:
+                    <strong>{{ $vacancies->firstWhere('id', $selectedVacancyId)->title ?? 'Lowongan tidak ditemukan' }}</strong>
+                </div>
+            @else
+                {{-- User masuk manual ke /apply --}}
+                <div class="mb-3">
+                    <label class="form-label">Pilih Lowongan</label>
+                    @foreach ($vacancies as $v)
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="vacancy_id" value="{{ $v->id }}">
+                            <label class="form-check-label">{{ $v->title }}</label>
+                        </div>
+                    @endforeach
+                </div>
+            @endif
 
             <!-- Nama -->
             <div class="mb-3">

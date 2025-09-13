@@ -1,8 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
     <div class="container">
-        <h2 class="mb-4 mt-5 pt-5">Manajemen Lowongan</h2>
+        <h2 class="mb-4">Manajemen Lowongan</h2>
 
         @if (session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>

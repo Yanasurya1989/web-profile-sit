@@ -31,13 +31,14 @@ class AuthController extends Controller
             'name'     => $request->name,
             'email'    => $request->email,
             'password' => Hash::make($request->password),
+            'role'     => 'user', // 🔑 default role user
         ]);
 
-        // Langsung login setelah register
+        // Login otomatis
         Auth::login($user);
 
-        return redirect()->route('admin.dashboard')
-            ->with('success', 'Registrasi berhasil! Anda sudah login.');
+        // Redirect sesuai role
+        return $this->redirectBasedOnRole($user);
     }
 
     public function login(Request $request)
@@ -49,12 +50,14 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->route('admin.dashboard');
-        }
+            $user = Auth::user();
 
-        return back()->withErrors([
-            'email' => 'Email atau password salah.',
-        ]);
+            return redirect()->intended(
+                $user->role === 'admin'
+                    ? route('admin.dashboard')
+                    : route('user.applications.index')
+            );
+        }
     }
 
     public function logout(Request $request)
@@ -63,5 +66,19 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect()->route('login');
+    }
+
+    /**
+     * Helper untuk redirect sesuai role
+     */
+    private function redirectBasedOnRole($user)
+    {
+        if ($user->role === 'admin') {
+            return redirect()->route('admin.dashboard')
+                ->with('success', 'Selamat datang Admin!');
+        }
+
+        return redirect()->route('user.applications.index')
+            ->with('success', 'Selamat datang di dashboard Anda!');
     }
 }
