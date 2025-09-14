@@ -5,7 +5,7 @@
         <!-- Swiper Container -->
         <div class="swiper qaSwiper">
             <div class="swiper-wrapper">
-                <!-- Card 1 -->
+
                 <div class="swiper-slide">
                     <div class="qa-card">
                         <img src="https://picsum.photos/400/200?random=1" alt="QA 1">
@@ -19,7 +19,7 @@
                     </div>
                 </div>
 
-                <!-- Card 2 -->
+
                 <div class="swiper-slide">
                     <div class="qa-card">
                         <img src="https://picsum.photos/400/200?random=2" alt="QA 2">
@@ -33,7 +33,7 @@
                     </div>
                 </div>
 
-                <!-- Card 3 -->
+
                 <div class="swiper-slide">
                     <div class="qa-card">
                         <img src="https://picsum.photos/400/200?random=3" alt="QA 3">
