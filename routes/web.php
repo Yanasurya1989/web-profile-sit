@@ -65,11 +65,11 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::resource('detil-jenjang', DetilJenjangController::class);
     Route::patch('detil-jenjang/{detil}/toggle', [DetilJenjangController::class, 'toggle'])->name('detil-jenjang.toggle');
 
-    // ✅ Footer (backend) tanpa show
+    // Footer (backend) tanpa show
     Route::resource('footer', FooterController::class)->except(['show']);
     Route::patch('footer/{id}/set-active', [FooterController::class, 'setActive'])->name('footer.setActive');
 
-    // ✅ Muwashofat (Backend)
+    // Muwashofat (Backend)
     Route::resource('muwashofat', MuwashofatController::class);
 
     Route::get('/registrations', [RegistrationController::class, 'index'])
@@ -82,7 +82,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::patch('section/{section}/toggle', [SectionController::class, 'toggleActive'])->name('section.toggle');
     Route::post('section/update-order', [SectionController::class, 'updateOrder'])->name('section.updateOrder');
 
-    // ✅ Admin Vacancy (backend khusus admin)
+    // Admin Vacancy (backend khusus admin)
     Route::get('vacancies', [VacancyController::class, 'adminIndex'])->name('vacancies.adminIndex');
     Route::patch('vacancies/{vacancy}/toggle', [VacancyController::class, 'toggleActive'])->name('vacancies.toggle');
     Route::resource('vacancies', VacancyController::class)->except(['index']);

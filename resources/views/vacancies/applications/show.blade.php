@@ -66,6 +66,29 @@
                                     onclick="return confirm('Ubah status jadi diproses?')">Proses</button>
                             </form>
                         </td>
+
+                        {{-- <td> --}}
+                        {{-- <a href="{{ route('admin.applications.detil', $app->id) }}" class="btn btn-sm btn-info mb-1">
+                                Lihat Detil
+                            </a> --}}
+
+                        {{-- Dropdown ubah status --}}
+                        {{-- <form action="{{ route('admin.applications.updateStatus', $app->id) }}" method="POST"
+                                class="d-inline form-status">
+                                @csrf
+                                @method('PATCH')
+                                <select name="status" class="form-select form-select-sm status-dropdown">
+                                    <option disabled selected>-- Ubah Status --</option>
+                                    <option value="accepted" {{ $app->status === 'accepted' ? 'selected' : '' }}>Terima
+                                    </option>
+                                    <option value="rejected" {{ $app->status === 'rejected' ? 'selected' : '' }}>Tolak
+                                    </option>
+                                    <option value="process" {{ $app->status === 'process' ? 'selected' : '' }}>Proses
+                                    </option>
+                                </select>
+                            </form> --}}
+                        {{-- </td> --}}
+
                     </tr>
                 @empty
                     <tr>

@@ -52,13 +52,13 @@
                 </div>
             @endif
 
-            <!-- Nama -->
+
             <div class="mb-3">
                 <label class="form-label">Nama Pelamar</label>
                 <input type="text" name="nama_pelamar" class="form-control">
             </div>
 
-            <!-- Jenis Kelamin -->
+
             <div class="mb-3">
                 <label class="form-label">Jenis Kelamin</label>
                 <div>
@@ -67,7 +67,7 @@
                 </div>
             </div>
 
-            <!-- Tempat, Tanggal Lahir -->
+
             <div class="mb-3">
                 <label class="form-label">Tempat, Tanggal Lahir</label>
                 <div class="d-flex gap-2">
@@ -76,55 +76,55 @@
                 </div>
             </div>
 
-            <!-- Alamat -->
+
             <div class="mb-3">
                 <label class="form-label">Alamat Lengkap</label>
                 <textarea name="alamat" class="form-control"></textarea>
             </div>
 
-            <!-- Nomor WA -->
+
             <div class="mb-3">
                 <label class="form-label">Nomor WA</label>
                 <input type="text" name="nomor_wa" class="form-control">
             </div>
 
-            <!-- Jurusan -->
+
             <div class="mb-3">
                 <label class="form-label">Jurusan</label>
                 <input type="text" name="jurusan" class="form-control">
             </div>
 
-            <!-- Sekolah / Universitas -->
+
             <div class="mb-3">
                 <label class="form-label">Sekolah / Universitas</label>
                 <input type="text" name="sekolah_universitas" class="form-control">
             </div>
 
-            <!-- Nilai / IPK -->
+
             <div class="mb-3">
                 <label class="form-label">Nilai / IPK Akhir</label>
                 <input type="text" name="nilai_ipk" class="form-control">
             </div>
 
-            <!-- Tilawah -->
+
             <div class="mb-3">
                 <label class="form-label">Jumlah Lembar Tilawah</label>
                 <input type="number" name="jumlah_lembar_tilawah" class="form-control">
             </div>
 
-            <!-- Hafalan -->
+
             <div class="mb-3">
                 <label class="form-label">Apakah Hafalan Sudah Bersanad?</label>
                 <input type="checkbox" name="hafalan_bersanad" value="1">
             </div>
 
-            <!-- Riwayat Penyakit -->
+
             <div class="mb-3">
                 <label class="form-label">Riwayat Penyakit</label>
                 <textarea name="riwayat_penyakit" class="form-control"></textarea>
             </div>
 
-            <!-- Uploads -->
+
             <div class="mb-3">
                 <label class="form-label">Surat Lamaran</label>
                 <input type="file" name="surat_lamaran" class="form-control">

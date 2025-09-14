@@ -108,6 +108,18 @@ class ApplicationController extends Controller
         return back()->with('success', 'Status pelamar berhasil diubah!');
     }
 
+    public function updateStatusDropDown(Request $request, Application $application)
+    {
+        $request->validate([
+            'status' => 'required|in:accepted,rejected,process',
+        ]);
+
+        $application->status = $request->status;
+        $application->save();
+
+        return redirect()->back()->with('success', 'Status pelamar berhasil diubah!');
+    }
+
 
     public function indexUser()
     {
