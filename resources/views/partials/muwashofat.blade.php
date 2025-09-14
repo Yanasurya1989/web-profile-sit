@@ -2,7 +2,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 
     <div class="container">
-        <h2 class="text-center mb-5">Keunggulan SIT Qordova</h2>
+        <h2 class="text-center mb-5">Kegiatan Ekstrakurikuler</h2>
 
         <!-- Swiper Container -->
         <div class="swiper mySwiper">
