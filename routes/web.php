@@ -6,16 +6,18 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\FooterController;
 use App\Http\Controllers\NavbarController;
+use App\Http\Controllers\VacancyController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\MuwashofatController;
 use App\Http\Controllers\Admin\AboutController;
+use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\Admin\SectionController;
+use App\Http\Controllers\AlumniFrontendController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DetilJenjangController;
+use App\Http\Controllers\Admin\InstagramEmbedController;
 use App\Http\Controllers\Frontend\DetilJenjangFrontendController;
-use App\Http\Controllers\VacancyController;
-use App\Http\Controllers\ApplicationController;
 
 // =====================
 // Auth
@@ -97,7 +99,13 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
 
     Route::patch('/applications/{application}/status', [ApplicationController::class, 'updateStatus'])
         ->name('applications.updateStatus');
+
+    Route::resource('instagram', InstagramEmbedController::class);
+
+    Route::resource('alumni', App\Http\Controllers\Admin\AlumniController::class);
 });
+// Frontend ALumni
+// Route::get('/alumni', [AlumniFrontendController::class, 'index'])->name('alumni.index');
 
 // =====================
 // Frontend Jenjang

@@ -146,6 +146,28 @@
                 </div>
             </div>
 
+            <!-- Kelola Instagram -->
+            <div class="col-md-4 mb-3">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Kelola Instagram</h5>
+                        <p class="card-text">Tambah, edit, hapus, dan aktifkan embed Instagram.</p>
+                        <a href="{{ route('admin.instagram.index') }}" class="btn btn-outline-info">Lihat Instagram</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kelola Alumni -->
+            <div class="col-md-4 mb-3">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Kelola Alumni</h5>
+                        <p class="card-text">Tambah, edit, dan hapus quote alumni.</p>
+                        <a href="{{ route('admin.alumni.index') }}" class="btn btn-outline-primary">Lihat Alumni</a>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 @endsection

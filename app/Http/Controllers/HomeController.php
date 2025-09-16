@@ -6,6 +6,7 @@ use App\Models\Hero;
 use App\Models\News;
 use App\Models\Stat;
 use App\Models\About;
+use App\Models\Alumni;
 use App\Models\Footer;
 use App\Models\Navbar;
 use App\Models\Muwashofat;
@@ -29,6 +30,7 @@ class HomeController extends Controller
         $heroes = Hero::where('status', 1)->latest()->get();
         $abouts = About::where('status', 1)->latest()->get();
         $stats = Stat::all();
+        $alumnis = Alumni::all();
         $muwashofats = Muwashofat::where('status', 1)->get();
         $footer = Footer::where('is_active', 1)->first();
         $navbar = Navbar::first();
@@ -41,7 +43,8 @@ class HomeController extends Controller
             'stats',
             'muwashofats',
             'footer',
-            'navbar'
+            'navbar',
+            'alumnis'
         ));
     }
 }

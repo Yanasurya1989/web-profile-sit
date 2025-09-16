@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
-    <div class="container py-5">
+    <div class="container">
         <h2 class="mb-4">Edit Lowongan</h2>
 
         <form action="{{ route('admin.vacancies.update', $vacancy->id) }}" method="POST">

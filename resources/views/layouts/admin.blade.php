@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <title>Admin Panel</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    {{-- tempat CSS tambahan --}}
+    @stack('styles')
 </head>
 
 <body>
@@ -24,6 +27,9 @@
     <main class="py-4">
         @yield('content')
     </main>
+
+    {{-- tempat JS tambahan --}}
+    @stack('scripts')
 </body>
 
 </html>
